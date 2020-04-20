@@ -60,7 +60,7 @@ Create a new database or schema in MySQL instance.
 
 Configure:
 ```application.properties
-#Enable below line for JPA to create tables for the first time
+#Enable below line for JPA to create tables/relationships for the first time
 #spring.jpa.hibernate.ddl-auto=create 
 #Update database host/schema name below.
 spring.datasource.url=jdbc:mysql://${mysql:localhost}:3306/<schema_name> 
