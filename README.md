@@ -1,22 +1,22 @@
 # giphy-store
 
-Giphy Store is an online web application that allows an user to search and save animated GIFs to a user profile using the GIPHY API. User has to register 
+Giphy Store is an online web application that allows an user to search and save animated GIFs to a user profile using the GIPHY API.
 
 ## Tools & Technologies
 
-* [Spring Web](https://docs.spring.io/spring-boot/docs/2.2.6.RELEASE/reference/htmlsingle/#boot-features-developing-web-applications)
+* [Spring Web MVC](https://docs.spring.io/spring/docs/3.2.x/spring-framework-reference/html/mvc.html)
 * [Spring Security](https://docs.spring.io/spring-boot/docs/2.2.6.RELEASE/reference/htmlsingle/#boot-features-security)
 * [Spring Data JPA](https://docs.spring.io/spring-boot/docs/2.2.6.RELEASE/reference/htmlsingle/#boot-features-jpa-and-spring-data)
 * [Lombok](https://projectlombok.org/)
 * [Bootstrap 3 Tutorial](https://www.w3schools.com/bootstrap/default.asp)
 * [MySQL Installation Guide](https://dev.mysql.com/doc/mysql-installation-excerpt/5.7/en/)
-* [Official Gradle documentation](https://docs.gradle.org)
 * [Spring Boot Gradle Plugin Reference Guide](https://docs.spring.io/spring-boot/docs/2.2.6.RELEASE/gradle-plugin/reference/html/)
-* [Buildship Gradle Integration](https://marketplace.eclipse.org/content/buildship-gradle-integration#group-details)
+* [Eclipse Buildship Gradle Integration](https://marketplace.eclipse.org/content/buildship-gradle-integration#group-details)
 
 ## Database Design
 
-
+The below scrip
+* [SQL Scripts](/nagendiranr/giphy-store/tree/master/src/main/resources/scripts/giphystore_db_scripts.sql)
 
 ## Getting Started
 To install Giphy Store application, run the following commands:
@@ -82,7 +82,7 @@ To start the application:
 
 #### Create an account: 
 
-Simply create an account with username and password by clicking "Create an account" on http://localhost:8080.
+Simply create an account with username and password by clicking "Create an account" on `http://localhost:8080`.
 
 #### Login:
 

@@ -43,7 +43,7 @@
   <h2>Giphy Search</h2>
   <div class="search-bar">
     <input type="text" name="query" id="user-search" />
-    <input id="submit" type="button" value="Submit" class="btn  btn-sm btn-success" />
+    <input id="submit" type="button" value="Submit" class="btn btn-sm btn-success" />
     <input type="button" class="trending btn btn-sm btn-danger" value="See what's trending" />
   </div>
   <div id="buttons"></div>
