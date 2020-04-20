@@ -14,7 +14,7 @@ function showCategories() {
         "id" : "category",
         "type" : "button",
         "data-toggle" : "dropdown",
-        "class" : "btn btn-primary dropdown-toggle"
+        "class" : "btn btn-link dropdown-toggle"
       });
       $button.append("View by Category ");
       var $span = $("<span>");
