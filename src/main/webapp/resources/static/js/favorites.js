@@ -43,8 +43,11 @@ function showCategories() {
 }
 showCategories(); 
 //$(".dropdown-content a").on("click", function(e) {
-$(document).on("click", ".dropdown-menu li a", function(e) {
-  e.preventDefault();
+$(document).on("click", ".dropdown-menu li a", function() {
+  $("#selectedcategory").html("");
+  var $span = $("<span>");
+  $span.attr("class", "badge");
+  $span.attr("style", "font-size:20px");     
   //CSRF token
  	var csrfHeader = $("meta[name=_csrf_header]").attr("content");
   var csrfToken = $("meta[name=_csrf]").attr("content");  
@@ -52,17 +55,19 @@ $(document).on("click", ".dropdown-menu li a", function(e) {
   headers[csrfHeader] = csrfToken;
   $("#favorites").html("");
   // Beginning API call
+  $span.append($(this).attr("name")); 
+  $("#selectedcategory").append($span);
   var queryURL = "http://localhost:8080/giphy/category";
-  var category = {
-    id : $(this).attr("id")
-  }
   $.ajax({
     url: queryURL + "?categoryId=" + $(this).attr("id"),
     method: "GET",      
     contentType: "application/json",
     success: function(giphys) {
-      if(giphys.length == 0) {
+      if(giphys.length == 0) {      
         $("#favorites").append("No giphy found!");
+      }
+      else{
+       
       }
       for (i = 0; i < giphys.length ; i++) {
         var $img = $("<img>");

@@ -32,7 +32,7 @@
             <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
         </form>
 
-        <h4>Hi ${pageContext.request.userPrincipal.name}! | <a href="${contextPath}/home">Home</a> | <a href="${contextPath}/favorites">My Favorites</a> | <a href="${contextPath}/category">My Categories</a> | <a href="#" onclick="document.forms['logoutForm'].submit()">Logout</a></h4>
+        <h4>Hi ${pageContext.request.userPrincipal.name}! | <a href="${contextPath}/home">Home</a> | <a href="${contextPath}/favorites">My Giphys</a> | <a href="${contextPath}/category">Add Categories</a> | <a href="#" onclick="document.forms['logoutForm'].submit()">Logout</a></h4>
 		
     </c:if>
 

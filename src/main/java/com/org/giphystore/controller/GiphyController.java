@@ -4,6 +4,8 @@ import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Set;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -28,6 +30,8 @@ import com.org.giphystore.service.UserService;
 @RestController
 @RequestMapping(value = "/giphy")
 public class GiphyController {
+	
+	public static Logger logger = LoggerFactory.getLogger(GiphyController.class);
 
 	@Autowired
 	private GiphyService giphyService;
@@ -60,9 +64,11 @@ public class GiphyController {
 	public ResponseEntity<Set<Giphy>> getGiphyByCategory(@RequestParam String categoryId) {
 		Set<Giphy> giphys = getLoggedOnUser().getGiphys();
 		Set<Giphy> newGiphys = new HashSet<Giphy>();
+		//Iterate the list of user giphys and create new Set for matching category
 		for (Iterator<Giphy> iterator = giphys.iterator(); iterator.hasNext();) {		   
 			Giphy giphy =  iterator.next();
 		    if(giphy.getCategory().getId() == Long.parseLong(categoryId)) {
+		    	logger.debug("Matching Giphy ID:"+giphy.getGiphyId());
 		    	newGiphys.add(giphy);
 		    }		    
 		}
@@ -85,6 +91,7 @@ public class GiphyController {
 	private User getLoggedOnUser() {
 		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 		String currentPrincipalName = authentication.getName();
+		logger.debug("Logged username:"+currentPrincipalName);
 		User user = userService.findByUsername(currentPrincipalName);
 		return user;
 	}

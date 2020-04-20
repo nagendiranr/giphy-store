@@ -8,6 +8,7 @@ Giphy Store is an online web application that allows an user to register, search
 * [Spring Security](https://docs.spring.io/spring-boot/docs/2.2.6.RELEASE/reference/htmlsingle/#boot-features-security)
 * [Spring Data JPA](https://docs.spring.io/spring-boot/docs/2.2.6.RELEASE/reference/htmlsingle/#boot-features-jpa-and-spring-data)
 * [Lombok](https://projectlombok.org/)
+* [jQuery](https://jquery.com/)
 * [Bootstrap 3 Tutorial](https://www.w3schools.com/bootstrap/default.asp)
 * [MySQL Installation Guide](https://dev.mysql.com/doc/mysql-installation-excerpt/5.7/en/)
 * [Spring Boot Gradle Plugin Reference Guide](https://docs.spring.io/spring-boot/docs/2.2.6.RELEASE/gradle-plugin/reference/html/)
@@ -15,7 +16,7 @@ Giphy Store is an online web application that allows an user to register, search
 
 ## Database Design
 
-Auto generated hibernate queries by Spring Data JPA based on multiple `Entity` and their relationships for storing user information.
+Auto generated hibernate queries by Spring Data JPA based on multiple `Entities` and their relationships for storing user information.
 
 * [SQL Scripts](https://github.com/nagendiranr/giphy-store/blob/master/src/main/resources/scripts/giphystore_db_scripts.sql)
 
@@ -91,7 +92,7 @@ Login to the website using username and password.
 
 #### Create category:
 
-Navigate to "My Categories" page for creating list of categories before you start searching Giphy.
+Navigate to "Add Categories" page for creating list of categories before you start searching Giphy.
 
 #### Search giphy:
 
@@ -101,10 +102,6 @@ Navigate to "Home" page for searching your favorites Giphy and view the what's t
 
 Click "Save" on your favorites giphy to store one of the categories created in Step 3.
 
-#### View saved giphy:
+#### View/Remove saved giphy:
 
-Navigate to "My Favorites" for viewing saved giphy on selected category.
-
-#### Remove giphy:
-
-Click "Remove" on giphy to remove giphy from your favorites.
+Navigate to "My Giphys" for viewing saved giphy on selected category and click "Remove" on giphy to remove giphy from your favorites.

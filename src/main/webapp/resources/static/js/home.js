@@ -8,7 +8,7 @@ function addSearchBtns() {
     $("#buttons").append($button);
   }
 }
-addSearchBtns();
+//addSearchBtns();
 $(".btn").on("click", function() {
   $("#results").html("");
   //CSRF token
@@ -46,7 +46,7 @@ $(".btn").on("click", function() {
     if (topics.length > 6) {
       topics.shift();
     }
-    addSearchBtns();
+    //addSearchBtns();
   }
   params.q = query;
   if ($(this).hasClass("trending")) {
@@ -90,21 +90,8 @@ $(".btn").on("click", function() {
         $span.attr("class", "caret");
         $button.append($span);
         var $ul = $("<ul>");
-        $ul.attr("class", "dropdown-menu");     
-        //If no catgory, redirect to create category
-        if(categoryList.length == 0) {
-          var $li = $("<li>")
-          var $a = $("<a>");
-          $a.attr({
-            href : "http://localhost:8080/category",
-            id : "create"                   
-          });
-          $a.append("Create Category");
-          $li.append($a);
-          $ul.append($li);
-          $drop_div.append($button, $ul);
-        }
-        //If category already exist
+        $ul.attr("class", "dropdown-menu");
+        //Category list populate
         for (j = 0; j < categoryList.length; j++) {
           var $li = $("<li>")
           var $a = $("<a>");
@@ -121,11 +108,22 @@ $(".btn").on("click", function() {
           $li.append($a);
           $ul.append($li);
           $drop_div.append($button, $ul); 
-        } 
+        }
+        //Add new drop down for create category
+        var $li = $("<li>")
+        var $a = $("<a>");
+        $a.attr({
+            href : "http://localhost:8080/category",
+            id : "create"                   
+        });
+        $a.append("Create New");
+        $li.append($a);
+        $ul.append($li);
+        $drop_div.append($button, $ul); 
         $div.append($img, $drop_div);
         $("#results").append($div);
       }
-      $(".dropdown-menu li a").on("click", function(e) {
+      $(".dropdown-menu li a").on("click", function() {
         var category = {
           id : $(this).attr("id")
         }
