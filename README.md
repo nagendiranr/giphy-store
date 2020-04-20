@@ -1,6 +1,6 @@
 # giphy-store
 
-Giphy Store is an online web application that allows an user to search and save animated GIFs to a user profile using the GIPHY API.
+Giphy Store is an online web application that allows an user to register, search and save animated GIFs to the user profile using GIPHY API.
 
 ## Tools & Technologies
 
