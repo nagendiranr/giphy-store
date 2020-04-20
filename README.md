@@ -16,7 +16,7 @@ Giphy Store is an online web application that allows an user to search and save 
 ## Database Design
 
 The below scrip
-* [SQL Scripts](/resources/scripts/giphystore_db_scripts.sql)
+* [SQL Scripts](https://github.com/nagendiranr/giphy-store/blob/master/src/main/resources/scripts/giphystore_db_scripts.sql)
 
 ## Getting Started
 To install Giphy Store application, run the following commands:
