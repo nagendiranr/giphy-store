@@ -17,7 +17,7 @@ public class GiphyServiceImpl implements GiphyService{
 	private GiphyRepository giphyRepository;
 	
 	@Override
-	public void save(Giphy giphy, User user) {		
+	public void save(Giphy giphy, User user) throws Exception{		
 		Set<User> userSet = new HashSet<User>(); 
 		userSet.add(user);
 		giphy.setUsers(userSet);
@@ -25,7 +25,7 @@ public class GiphyServiceImpl implements GiphyService{
 	}
 	
 	@Override
-	public void remove(Giphy giphy, User user) {
+	public void remove(Giphy giphy, User user) throws Exception{
 		giphyRepository.deleteById(giphy.getId());
 	}	
 }

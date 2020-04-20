@@ -44,13 +44,23 @@ public class GiphyController {
 
 	@PostMapping(value = "/add", consumes = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<String> add(@RequestBody Giphy giphy) {
-		giphyService.save(giphy, getLoggedOnUser());
+		try {
+			giphyService.save(giphy, getLoggedOnUser());
+		} catch (Exception e) {
+			logger.error(e.getMessage(), e);
+			ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Internal Server Error");
+		}
 		return ResponseEntity.status(HttpStatus.CREATED).body("Added");
 	}
 
 	@DeleteMapping(value = "/remove", consumes = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<String> remove(@RequestBody Giphy giphy) {
-		giphyService.remove(giphy, getLoggedOnUser());
+		try {
+			giphyService.remove(giphy, getLoggedOnUser());
+		} catch (Exception e) {
+			logger.error(e.getMessage(), e);
+			ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Internal Server Error");
+		}
 		return ResponseEntity.status(HttpStatus.ACCEPTED).body("Deleted");
 	}
 	
@@ -77,7 +87,12 @@ public class GiphyController {
 	
 	@PostMapping(value = "/category/add", consumes = MediaType.APPLICATION_JSON_VALUE) 
 	public ResponseEntity<String> addCategory(@RequestBody Category category) { 
-		categoryService.save(category, getLoggedOnUser());
+		try {
+			categoryService.save(category, getLoggedOnUser());
+		} catch (Exception e) {
+			logger.error(e.getMessage(), e);
+			ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Internal Server Error");
+		}
 		return ResponseEntity.status(HttpStatus.CREATED).body("Added"); 
 	}
 	 
@@ -92,7 +107,13 @@ public class GiphyController {
 		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 		String currentPrincipalName = authentication.getName();
 		logger.debug("Logged username:"+currentPrincipalName);
-		User user = userService.findByUsername(currentPrincipalName);
+		User user = null;
+		try {
+			user = userService.findByUsername(currentPrincipalName);
+		} catch (Exception e) {
+			logger.error(e.getMessage(), e);
+			ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Internal Server Error");
+		}
 		return user;
 	}
 }

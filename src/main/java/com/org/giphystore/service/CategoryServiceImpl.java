@@ -14,7 +14,7 @@ public class CategoryServiceImpl implements CategoryService{
 	private CategoryRepository categoryRepository;
 	
 	@Override
-	public void save(Category category, User user) {
+	public void save(Category category, User user) throws Exception{
 		category.setUser(user);
 		categoryRepository.save(category);		
 	}

@@ -1,5 +1,7 @@
 package com.org.giphystore.controller;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -14,6 +16,9 @@ import com.org.giphystore.validator.UserValidator;
 
 @Controller
 public class UserController {
+	
+	public static Logger logger = LoggerFactory.getLogger(UserController.class);
+
     @Autowired
     private UserService userService;
 
@@ -32,7 +37,12 @@ public class UserController {
         if (bindingResult.hasErrors()) {
             return "registration";
         }
-        userService.save(userForm);
+        try {
+			userService.save(userForm);
+		} catch (Exception e) {
+			logger.error(e.getMessage(), e);
+			return "error";
+		}
         return "redirect:/home";
     }
 
