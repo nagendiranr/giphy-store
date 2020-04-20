@@ -100,7 +100,7 @@ Navigate to "Home" page for searching your favorites Giphy and view the what's t
 
 #### Save giphy to category:
 
-Click "Save" on your favorites giphy to store one of the categories created in Step 3.
+Click "Save" on your favorites giphy to store one of the categories created earlier.
 
 #### View/Remove saved giphy:
 
