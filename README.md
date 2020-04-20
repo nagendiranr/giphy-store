@@ -15,7 +15,8 @@ Giphy Store is an online web application that allows an user to search and save 
 
 ## Database Design
 
-The below scrip
+Auto generated hibernate queries by Spring JPA based on multiple `Entity` and their relationships required for the website.
+
 * [SQL Scripts](https://github.com/nagendiranr/giphy-store/blob/master/src/main/resources/scripts/giphystore_db_scripts.sql)
 
 ## Getting Started
