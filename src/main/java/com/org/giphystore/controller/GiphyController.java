@@ -43,35 +43,25 @@ public class GiphyController {
 	private CategoryService categoryService;
 
 	@PostMapping(value = "/add", consumes = MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity<String> add(@RequestBody Giphy giphy) {
-		try {
-			giphyService.save(giphy, getLoggedOnUser());
-		} catch (Exception e) {
-			logger.error(e.getMessage(), e);
-			ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Internal Server Error");
-		}
+	public ResponseEntity<String> add(@RequestBody Giphy giphy) throws Exception {
+		giphyService.save(giphy, getLoggedOnUser());
 		return ResponseEntity.status(HttpStatus.CREATED).body("Added");
 	}
 
 	@DeleteMapping(value = "/remove", consumes = MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity<String> remove(@RequestBody Giphy giphy) {
-		try {
-			giphyService.remove(giphy, getLoggedOnUser());
-		} catch (Exception e) {
-			logger.error(e.getMessage(), e);
-			ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Internal Server Error");
-		}
+	public ResponseEntity<String> remove(@RequestBody Giphy giphy) throws Exception {
+		giphyService.remove(giphy, getLoggedOnUser());
 		return ResponseEntity.status(HttpStatus.ACCEPTED).body("Deleted");
 	}
 	
 	@GetMapping(value = "/get", produces = MediaType.APPLICATION_JSON_VALUE) 
-	public ResponseEntity<Set<Giphy>> get() {
+	public ResponseEntity<Set<Giphy>> get() throws Exception {
 		Set<Giphy> giphys = getLoggedOnUser().getGiphys(); 
 		return	ResponseEntity.status(HttpStatus.OK).body(giphys); 
 	}
 	
 	@GetMapping(value = "/category", produces = MediaType.APPLICATION_JSON_VALUE) 
-	public ResponseEntity<Set<Giphy>> getGiphyByCategory(@RequestParam String categoryId) {
+	public ResponseEntity<Set<Giphy>> getGiphyByCategory(@RequestParam String categoryId) throws Exception {
 		Set<Giphy> giphys = getLoggedOnUser().getGiphys();
 		Set<Giphy> newGiphys = new HashSet<Giphy>();
 		//Iterate the list of user giphys and create new Set for matching category
@@ -86,34 +76,23 @@ public class GiphyController {
 	}
 	
 	@PostMapping(value = "/category/add", consumes = MediaType.APPLICATION_JSON_VALUE) 
-	public ResponseEntity<String> addCategory(@RequestBody Category category) { 
-		try {
-			categoryService.save(category, getLoggedOnUser());
-		} catch (Exception e) {
-			logger.error(e.getMessage(), e);
-			ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Internal Server Error");
-		}
+	public ResponseEntity<String> addCategory(@RequestBody Category category) throws Exception { 
+		categoryService.save(category, getLoggedOnUser());
 		return ResponseEntity.status(HttpStatus.CREATED).body("Added"); 
 	}
 	 
 	@GetMapping(value = "/category/get", produces = MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity<Set<Category>> getCategory()
+	public ResponseEntity<Set<Category>> getCategory() throws Exception
 	{
 		Set<Category> categories = getLoggedOnUser().getCategories();
 		return	ResponseEntity.status(HttpStatus.OK).body(categories);
 	}
 	 	
-	private User getLoggedOnUser() {
+	private User getLoggedOnUser() throws Exception {
 		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 		String currentPrincipalName = authentication.getName();
 		logger.debug("Logged username:"+currentPrincipalName);
-		User user = null;
-		try {
-			user = userService.findByUsername(currentPrincipalName);
-		} catch (Exception e) {
-			logger.error(e.getMessage(), e);
-			ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Internal Server Error");
-		}
+		User user = userService.findByUsername(currentPrincipalName);
 		return user;
 	}
 }

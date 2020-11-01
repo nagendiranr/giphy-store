@@ -1,5 +1,6 @@
 package com.org.giphystore.model;
 
+import java.io.Serializable;
 import java.util.Set;
 
 import javax.persistence.Entity;
@@ -18,8 +19,10 @@ import lombok.ToString;
 @Getter
 @Setter
 @ToString
-public class Role {
+public class Role implements Serializable {
 	
+	private static final long serialVersionUID = 8095584892661155502L;
+
 	@Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;

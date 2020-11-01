@@ -124,6 +124,7 @@ $(".btn").on("click", function() {
         $("#results").append($div);
       }
       $(".dropdown-menu li a").on("click", function() {
+        var removeFlag = "false";
         var category = {
           id : $(this).attr("id")
         }
@@ -136,12 +137,16 @@ $(".btn").on("click", function() {
           url: "http://localhost:8080/giphy/add",
           contentType: "application/json",
           headers : headers,
+          async : false,
           method: "POST",
           data : JSON.stringify(giphy),       
           success : function(){
-            //Nothing                        
+            removeFlag = "true";
           }
         });
+        if(removeFlag === "true") {
+          $(this).parent().parent().parent().parent().remove();
+        }
         //$(".dropbtn").attr("value", "Added");
       });
     }

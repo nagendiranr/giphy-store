@@ -1,5 +1,6 @@
 package com.org.giphystore.model;
 
+import java.io.Serializable;
 import java.util.Set;
 
 import javax.persistence.Entity;
@@ -23,7 +24,9 @@ import lombok.ToString;
 @Getter
 @Setter
 @ToString
-public class Giphy {
+public class Giphy implements Serializable {
+
+	private static final long serialVersionUID = 8972418439829791042L;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -34,8 +37,8 @@ public class Giphy {
 	@ManyToOne
 	private Category category; 
 	
-	@JsonIgnore
 	@ManyToMany
+	@JsonIgnore
 	@JoinTable(name = "user_giphy", joinColumns = @JoinColumn(name = "giphy_id"), inverseJoinColumns = @JoinColumn(name = "user_id"))
 	private Set<User> users;
 }

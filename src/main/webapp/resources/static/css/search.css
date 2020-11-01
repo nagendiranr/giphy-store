@@ -17,6 +17,21 @@
   width: 1200px;
 }
 
+#favorites {
+  margin: 0 auto;
+  width: 1200px;
+}
+
+#categories {
+  margin: 0 auto;
+  width: 1200px;
+}
+
+#selectedcategory {
+  margin: 0 auto;
+  width: 1200px;
+}
+
 .gif-box {
   margin: 0.5rem;
   display: inline-block;
